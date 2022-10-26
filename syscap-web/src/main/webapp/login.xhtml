@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="primeflex.css" />
+    </h:head>
+    <h:body>
+        <h:form prependId="false">
+            <div class="flex align-items-center justify-content-center">
+                <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
+                    <div class="text-center mb-5">
+                        <p:graphicImage name="historiaClinica.jpg" library="img" alt="Image"
+                                        height="50" styleClass="mb-3"/>
+                        <div class="text-900 text-3xl font-medium mb-3">Bienvenidos</div>
+                    </div>
+
+                    <div>
+                        <label for="txtNomUsu" class="block text-900 font-medium mb-2">Usuario:</label>
+                        <p:inputText id="txtNomUsu" value="#{loginBean.usuario.nombreUsu}" styleClass="w-full mb-3"/>
+
+                        <label for="txtClaUsu" class="block text-900 font-medium mb-2">Clave:</label>
+                        <p:password id="txtClaUsu" value="#{loginBean.usuario.claveUsu}" toggleMask="true" redisplay="true" styleClass="w-full mb-3"/>
+
+                        <div class="flex align-items-center justify-content-between mb-6">
+                            <div class="flex align-items-center">
+                                <p:selectBooleanCheckbox id="rememberme" styleClass="mr-2"/>
+                                <label for="rememberme">Recordar</label>
+                            </div>
+                            <a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Olvidaste tu clave?</a>
+                        </div>
+
+                        <p:commandButton value="Ingresar" icon="pi pi-user" styleClass="w-full"
+                                         process="@this txtNomUsu txtClaUsu" actionListener="#{loginBean.validarUsuario}"
+                                         update="menGen"/>
+                    </div>
+                </div>
+                <br></br>
+                <p:growl id="menGen" />
+
+            </div>
+        </h:form>
+    </h:body>
+</html>

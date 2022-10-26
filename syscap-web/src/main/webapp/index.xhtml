@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>syscap::Login</title>
+        <h:outputScript library="js" name="syscap.js"/>
+        <h:outputStylesheet library="css" name="syscap.css"/>
+    </h:head>
+    <h:body>
+        <h:form id="frmLog">
+            <h:panelGrid id="panGriLog" columns="2" border="1" style="margin-left: 40%;">
+                <f:facet name="header">
+                    <h:outputLabel value="Credenciales de acceso"/>.
+                </f:facet>
+                <h:outputLabel for="txtNomUsu" value="Usuario:" styleClass="etiqueta"/>
+                <h:inputText id="txtNomUsu" value="#{indexBean.txtNomUsu}" maxlength="10" required="true" 
+                             requiredMessage="Usuario requerido">
+                    <f:ajax event="blur" execute="txtNomUsu" listener="#{indexBean.cambiarEtiqueta}" render=":frmLog:btIng"/>
+                </h:inputText>
+                <h:outputLabel for="txtClaUsu" value="Clave:" styleClass="etiqueta"/>
+                <h:inputSecret id="txtClaUsu" value="#{indexBean.txtClaUsu}" maxlength="10" required="true" 
+                               requiredMessage="Clave requerida"/>
+            </h:panelGrid>
+            <br></br>
+            <h:commandButton id="btnIng" value="Ingresar" action="#{indexBean.validarUsuario}" style="#{indexBean.estiloBoton}"/>
+            <br></br>
+            <h:messages styleClass="#{indexBean.banError eq true ? 'mensajeError' :'mensajeInformacion'}"/>
+        </h:form>
+    </h:body>
+</html>
+

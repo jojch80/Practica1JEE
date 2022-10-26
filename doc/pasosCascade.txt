@@ -1,0 +1,5 @@
+Pasos para operar en cascade
+
+1. Configurar la cascade en la entidad padre con el atributo cascade y el tipo de operación (CascadeType.PERSIST, CascadeType.MERGE, etc)
+2. Los objetos deben enlazarse; es decir, el padre debe contener los hijos y el hijo debe saber cuál es el padre
+3. Guardar solamente el padre

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <!-- Persistence Unit - Representa una conexión a una base de datos -->
+  <!-- 1) Tipo de transacción (transaction-type):
+            - JTA - Java Transaction API - Modo automático controlado por el contenedor de EBJ (CMP),
+              generalmente utilizado por defecto cuando se usa un servidor de aplicación
+            -  RESOURCE_LOCAL - Modo manual controlado por el desarrollador (BMP),
+              generalmente utilizado cuando se utiliza un servidor web o una aplicación de escritorio.
+    -->
+  <persistence-unit name="syscapPU" transaction-type="JTA">
+    <!-- 2) Proveedor de persistencia: El cual depende del servidor de aplicación utilizado.
+               Se debe setear la propiead cuando la capa de persistencia (ORM) sea diferente al 
+               utilizado por el servidor de aplicación. Por ejemplo: Payara(eclipselink), Wildfly(Hibernate) ,
+               caso contrario es implícita y utiliza la del servidor de aplicación.  
+               EclipseLink -  org.eclipse.persistence.jpa.PersistenceProvider
+               Hibernate - org.hibernate.jpa.HibernatePersistenceProvider
+        -->
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <!-- 3) Determina con cual datasource trabajará la aplicación, el cual establece
+                con que base de datos se va a conectar.
+        -->
+    <jta-data-source>jdbc/__siscap</jta-data-source>
+    <!-- 4) La forma como se va a mapear las clases. En el caso de que se utliza 
+                el elemento  <exclude-unlisted-classes>false</exclude-unlisted-classes>
+                el mapeo es automático, caso contrario se debe utilizar el elemento
+                <class>Nombre de la clase incluido paquete </class>
+                <class>com.matoosfe.sysmed.entities.HistoriaClinica</class>
+        -->
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <!-- 5) Propiedades de JPA o de la capa de persistencia. Por ejemplo
+                con las dos propiedades a continuación se puede imprimir el sql
+                de las operaciones crud con sus parámetros, lo cual solo debe
+                estar habilitado en desarrollo
+        -->
+    <properties>
+      <property name="eclipselink.logging.level.sql" value="FINE"/>
+      <property name="eclipselink.logging.parameters" value="true"/>
+    </properties>
+  </persistence-unit>
+
+</persistence>

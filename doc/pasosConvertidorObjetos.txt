@@ -1,0 +1,7 @@
+Crear convertidor de objetos
+
+1. Crear un componente cuyo datasource sea una lista de objetos.
+2. Enlazar el valor del componente (selectonemenu) con un objeto en la entidad.
+3. Crear un convertidor personalizado
+4. Configurar el componente para que haga uso del convertidor.
+5. El objeto unitario (item del componente o entity) debe tener implementado los métdos hashcode e equals.

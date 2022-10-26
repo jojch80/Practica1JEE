@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-Payara Deploy</actionName>
+            <displayName>Payara Deploy</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>package</goal>
+                <goal>org.codehaus.cargo:cargo-maven3-plugin:deploy</goal>
+            </goals>
+            <activatedProfiles>
+                <activatedProfile>payara-local</activatedProfile>
+            </activatedProfiles>
+        </action>
+        <action>
+            <actionName>CUSTOM-Payara Undeploy</actionName>
+            <displayName>Payara Undeploy</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>package</goal>
+                <goal>org.codehaus.cargo:cargo-maven3-plugin:undeploy</goal>
+            </goals>
+            <activatedProfiles>
+                <activatedProfile>payara-local</activatedProfile>
+            </activatedProfiles>
+        </action>
+        <action>
+            <actionName>CUSTOM-Payara Redeploy</actionName>
+            <displayName>Payara Redeploy</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>package</goal>
+                <goal>org.codehaus.cargo:cargo-maven3-plugin:undeploy</goal>
+                <goal>org.codehaus.cargo:cargo-maven3-plugin:deploy</goal>
+            </goals>
+            <activatedProfiles>
+                <activatedProfile>payara-local</activatedProfile>
+            </activatedProfiles>
+        </action>
+    </actions>

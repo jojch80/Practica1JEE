@@ -1,0 +1,6 @@
+Configurar Datasource
+
+1. Descarguen y copiar el jar de la bdd (Postgres) en <payara_dir>/glassfish/domains/domain1/lib
+2. Reniciar el servidor de aplicación payara.
+3. Crear el datasource: pool y jdbc resource para lo cual utilizan el archivo glassfish-resources.xml  creado en el netbeans
+   con el siguiente comando ./asadmin add-resources <Path_archivo>/glassfish-resources.xml  a partir del directorio <payara_dir>/bin
