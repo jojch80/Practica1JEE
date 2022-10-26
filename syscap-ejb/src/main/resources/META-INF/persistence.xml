@@ -20,12 +20,6 @@
                 con que base de datos se va a conectar.
         -->
     <jta-data-source>jdbc/__siscap</jta-data-source>
-    <!-- 4) La forma como se va a mapear las clases. En el caso de que se utliza 
-                el elemento  <exclude-unlisted-classes>false</exclude-unlisted-classes>
-                el mapeo es automático, caso contrario se debe utilizar el elemento
-                <class>Nombre de la clase incluido paquete </class>
-                <class>com.matoosfe.sysmed.entities.HistoriaClinica</class>
-        -->
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <!-- 5) Propiedades de JPA o de la capa de persistencia. Por ejemplo
                 con las dos propiedades a continuación se puede imprimir el sql
