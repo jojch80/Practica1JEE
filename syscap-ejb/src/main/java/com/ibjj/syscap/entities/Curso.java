@@ -24,6 +24,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.json.bind.annotation.JsonbTransient;
 
 /**
  *
@@ -73,9 +76,12 @@ public class Curso implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_curso")
     private Integer idCurso;
+    
     @JoinColumn(name = "id_profesor", referencedColumnName = "id_profesor")
     @ManyToOne(optional = false)
     private Profesor idProfesor;
+    
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCurso")
     private Collection<CursoEstudiante> cursoEstudianteCollection;
 
@@ -163,7 +169,8 @@ public class Curso implements Serializable {
     public void setIdProfesor(Profesor idProfesor) {
         this.idProfesor = idProfesor;
     }
-
+    @XmlTransient
+    @JsonbTransient
     public Collection<CursoEstudiante> getCursoEstudianteCollection() {
         return cursoEstudianteCollection;
     }

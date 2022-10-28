@@ -4,6 +4,7 @@
  */
 package com.ibjj.syscap.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -19,6 +20,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import lombok.Getter;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.json.bind.annotation.JsonbTransient;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -61,6 +67,7 @@ public class Profesor implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_profesor")
     private Integer idProfesor;
+    @Getter(onMethod_= {@XmlTransient,@JsonbTransient})
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProfesor")
     private Collection<Curso> cursoCollection;
 
@@ -118,7 +125,7 @@ public class Profesor implements Serializable {
     public void setIdProfesor(Integer idProfesor) {
         this.idProfesor = idProfesor;
     }
-
+/*
     public Collection<Curso> getCursoCollection() {
         return cursoCollection;
     }
@@ -126,7 +133,7 @@ public class Profesor implements Serializable {
     public void setCursoCollection(Collection<Curso> cursoCollection) {
         this.cursoCollection = cursoCollection;
     }
-
+*/
     @Override
     public int hashCode() {
         int hash = 0;
