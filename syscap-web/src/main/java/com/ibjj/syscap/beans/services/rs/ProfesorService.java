@@ -65,7 +65,7 @@ public class ProfesorService {
             Profesor v_profesor = adminProfesor.buscarPorId(profesor.getIdProfesor());
             if (v_profesor != null) {
                 adminProfesor.actualizar(profesor);
-                return "Profesor eliminado";                 
+                return "Profesor actualizado";                 
             }
             return "Profesor que desea actualizar no existe";                 
        }    
